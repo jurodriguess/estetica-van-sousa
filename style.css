@@ -1,0 +1,364 @@
+:root {
+    --maincolor: #ff7867;
+    --black: #000000;
+    --bg: #ffffff;
+    --border: 0.1rem solid #dd2f2f;
+    font-size: 10px;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: 0.2s linear;
+     font-family: "Roboto", sans-serif;
+}
+
+body {
+    background-color: var(--bg);
+}
+
+section {
+    padding: 3rem 2rem;
+    margin: 0 auto;
+    max-width: 1200px;
+    
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right:0;
+    z-index: 99;
+    border-bottom: var(--border);
+    background-color: var(--bg);
+}
+
+.header section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.header .section logo{
+    object-fit: contain;
+    width: 30px;
+    height: auto;
+    mix-blend-mode: color-burn;
+}
+
+.header .logo img {
+    width: 10rem; /* Ajuste o tamanho do logo */
+    height: auto;
+    object-fit: contain;
+}
+
+.navbar a {
+    margin: 0 1rem;
+    font-size: 1.8rem;
+    color: #000000;
+}
+
+.navbar a:hover {
+    color: var(--maincolor);
+    border-bottom: 0.1rem solid var(--black);
+    padding-bottom: 0.5rem;
+    font-size: 2rem;
+}
+
+.icons img {
+    margin: 0.5rem;
+    cursor: pointer;
+}
+
+.icons img:hover {
+    width: 40px;
+    height: 40px;
+}
+
+.btn {
+    background-color: var(--maincolor);
+    color: #000000;
+    padding: 1rem 3rem;
+    font-size: 1.7rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    display: inline-block;
+}
+
+.btn:hover {
+    letter-spacing: 0.2rem;
+
+}
+
+.home-container {
+    background: url("./img/homeimg.png");
+    background-position: center;
+    background-size: cover;
+}
+
+.home-container section {
+    display: flex;
+    align-items: center;
+    min-height: 65vh;
+}
+
+.content {
+    max-width: 60rem;
+} 
+
+.content h3 {
+    color: #ffffff;
+    font-size: 5.7rem;
+}
+
+.content p {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 100;
+    line-height: 1.8;
+    padding: 1rem 0;
+}
+
+.title {
+    font-size: 4rem;
+    color: #cf3a3a;
+    text-transform: uppercase;
+    margin-bottom: 4rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    
+}
+
+.title span {
+    color:var(--maincolor);
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.about .row {
+    display: flex;
+    align-items: center;
+    background-color: #eeeeee;
+    gap: 1.5rem;
+}
+
+.about .row .content {
+    padding: 2rem;
+    
+}
+
+.about .row .content h3 {
+    color: #db4b4b;
+    font-size: 3rem;
+}
+
+.about .row .content p {
+    font-size: 1.8rem;
+    color: #000000;
+    padding: 1rem 0;
+    line-height: 1.6;
+}
+
+.box-container {
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap:1.5rem;
+}
+
+
+
+
+.menu .box-container .box {
+
+    text-align: center;
+    border: var(--border);
+    padding: 5rem;
+    cursor: pointer;
+}
+
+.menu .box-container .box img {
+    width: 30rem;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    
+
+}
+.menu .box-container .box h3 {
+    color: #000000;
+    font-size: 2rem;
+    padding: 1rem 0;
+}
+.menu .box-container .box .price {
+    color: #000000;
+    font-size: 2.5rem;
+    padding: 0.5rem 0;
+}
+.menu .box-container .box .price span {
+    font-size: 1.5rem;
+    text-decoration: line-through;
+    font-weight: lighter;
+    padding: 0.5rem 0;
+}
+
+.menu .box-container .box:hover {
+    background-color: #ffe0e0;
+}
+
+.menu .box-container .box:hover>* {
+    color: #000000;
+}
+
+
+.review .box-container .box {
+    border: var(--border);
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+.review .box-container .box p {
+    font-size: 1.5rem;
+    color: #000000;
+    padding: 2rem 0;
+    line-height: 1.8; 
+    font-weight: lighter;
+    
+}
+
+.review .box-container .box h3 {
+    color: #000000;
+    font-size: 2rem;
+    margin: 1rem 0;
+}
+
+.review .box-container .box .user {
+    width: 30rem;
+    height: auto;
+    object-fit: contain;
+    border-radius: 50%;
+
+}
+
+.address {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.footer {
+    text-align: center;
+}
+
+.footer .share {
+    padding: 1rem 0;
+}
+.footer .share img {
+    margin: 0.3rem;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 1rem;
+
+}
+
+.footer .share img:hover {
+    background-color: var(--maincolor);
+}
+
+/* --- ESTILOS DO DARK MODE --- */
+
+/* Variáveis para Dark Mode (Opcional, mas limpa o código) */
+:root {
+    --bg-dark: #121212;
+    --text-dark: #e0e0e0;
+    --maincolor-dark: #ff998a; /* Uma cor principal mais clara para contraste */
+    --border-dark: 0.1rem solid #444;
+}
+
+/* 1. MUDANÇAS GLOBAIS QUANDO O DARK MODE ESTÁ ATIVO */
+body.dark-mode {
+    background-color: var(--bg-dark); /* Fundo escuro */
+    color: var(--text-dark); /* Texto claro */
+}
+
+.dark-mode .header, 
+.dark-mode .header section { 
+    background-color: var(--bg-dark) !important; /* Usando !important para forçar a sobreposição */
+    border-bottom: var(--border-dark);
+}
+
+/* 2. COR DOS LINKS DA NAVBAR */
+.dark-mode .navbar a {
+    color: var(--text-dark) !important; /* Links devem ser brancos/claros */
+}
+
+/* 3. COR AO PASSAR O MOUSE */
+.dark-mode .navbar a:hover {
+    color: var(--maincolor-dark) !important;
+    border-bottom: 0.1rem solid var(--maincolor-dark);
+}
+/* 3. TÍTULOS E TEXTOS */
+.dark-mode .content h3, 
+.dark-mode .content p,
+.dark-mode .title,
+.dark-mode .title span {
+    color: var(--text-dark); /* Garante que títulos e textos fiquem claros */
+}
+
+/* 4. SEÇÃO "SOBRE MIM" */
+.dark-mode .about .row {
+    background-color: #212121; /* Fundo mais escuro que o body */
+}
+.dark-mode .about .row p {
+color: var(--text-dark) !important; 
+}
+
+/* 5. SEÇÃO MENU (BOXES) */
+.dark-mode .menu .box-container .box {
+    background-color: #1e1e1e;
+    border: var(--border-dark);
+}
+
+.dark-mode .menu .box-container .box h3,
+.dark-mode .menu .box-container .box .price,
+.dark-mode .menu .box-container .box .price span {
+    color: var(--text-dark);
+}
+
+.dark-mode .menu .box-container .box:hover {
+    background-color: #333;
+}
+
+/* 6. BOTÕES (BTNs) */
+.dark-mode .btn {
+    background-color: var(--maincolor-dark);
+    color: var(--bg-dark); /* Texto escuro no botão claro */
+}
+
+/* 7. REVIEWS (AVALIAÇÕES) */
+.dark-mode .review .box-container .box {
+    background-color: #1e1e1e !important;
+    border: var(--border-dark);
+}
+
+/* Cor do Texto do Depoimento */
+.dark-mode .review .box-container .box p {
+    color: var(--text-dark) !important; /* DEIXA O TEXTO BRANCO/CLARO */
+}
+
+/* Cor do Nome da Cliente */
+.dark-mode .review .box-container .box h3 {
+    color: var(--text-dark) !important; /* DEIXA O NOME BRANCO/CLARO */
+}
