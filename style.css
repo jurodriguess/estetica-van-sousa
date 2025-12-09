@@ -18,6 +18,12 @@
      font-family: "Roboto", sans-serif;
 }
 
+img {
+    /* Limita todas as imagens a no máximo 100% da largura do seu container */
+    max-width: 100%; 
+    height: auto; /* Garante que a proporção da imagem seja mantida */
+}
+
 body {
     background-color: var(--bg);
 }
@@ -361,4 +367,57 @@ color: var(--text-dark) !important;
 /* Cor do Nome da Cliente */
 .dark-mode .review .box-container .box h3 {
     color: var(--text-dark) !important; /* DEIXA O NOME BRANCO/CLARO */
+
+}
+
+@media (max-width: 991px) {
+    /* Reduz o tamanho da fonte base para dispositivos menores */
+    html {
+        font-size: 55%; 
+    }
+    
+    /* ---------------------------------------------------- */
+    /* A. HEADER (Cabeçalho) e Navegação */
+    /* ---------------------------------------------------- */
+    
+    .header section {
+        padding: 1rem 2rem;
+    }
+    
+    /* Oculta a navbar lateral em telas grandes e a transforma em coluna em mobile */
+    .header .navbar {
+        /* ... regras de posicionamento e background para menu mobile ... */
+        flex-direction: column; 
+        width: 100%; /* Ocupa a largura total da tela */
+    }
+
+    /* ---------------------------------------------------- */
+    /* B. SEÇÃO SOBRE MIM (.about) */
+    /* ---------------------------------------------------- */
+    
+    .about .row {
+        flex-wrap: wrap; /* ESSENCIAL: Empilha a imagem e o texto */
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .about .row .container-image img {
+        max-width: 90%; 
+        height: auto;
+    }
+
+    .home-container section {
+        min-height: 80vh; /* Reduz a altura da seção home em mobile */
+    }
+    
+    .content h3 {
+        font-size: 4rem; /* Reduz o tamanho do título principal */
+    }
+    
+    .content p {
+        font-size: 1.8rem; /* Reduz o tamanho do parágrafo */
+    }
+    
+  
+    
 }
