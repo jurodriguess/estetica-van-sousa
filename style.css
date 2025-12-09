@@ -49,6 +49,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    min-height: 50px;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
 }
@@ -61,7 +62,7 @@ section {
 }
 
 .header .logo img {
-    width: 10rem; /* Ajuste o tamanho do logo */
+    width: 180px; /* Ajuste o tamanho do logo */
     height: auto;
     object-fit: contain;
 }
@@ -121,7 +122,7 @@ section {
 } 
 
 .content h3 {
-    color: #ffffff;
+    color: #cf3a3a;
     font-size: 5.7rem;
 }
 
@@ -288,8 +289,8 @@ section {
 /* Variáveis para Dark Mode (Opcional, mas limpa o código) */
 :root {
     --bg-dark: #121212;
-    --text-dark: #e0e0e0;
-    --maincolor-dark: #ff998a; /* Uma cor principal mais clara para contraste */
+    --text-dark: #dddcdc;
+    --maincolor-dark: #cf3a3a; /* Uma cor principal mais clara para contraste */
     --border-dark: 0.1rem solid #444;
 }
 
@@ -316,7 +317,10 @@ body.dark-mode {
     border-bottom: 0.1rem solid var(--maincolor-dark);
 }
 /* 3. TÍTULOS E TEXTOS */
-.dark-mode .content h3, 
+.dark-mode .content h3 {
+    color: #cf3a3a;
+}
+
 .dark-mode .content p,
 .dark-mode .title,
 .dark-mode .title span {
@@ -367,7 +371,6 @@ color: var(--text-dark) !important;
 /* Cor do Nome da Cliente */
 .dark-mode .review .box-container .box h3 {
     color: var(--text-dark) !important; /* DEIXA O NOME BRANCO/CLARO */
-
 }
 
 @media (max-width: 991px) {
