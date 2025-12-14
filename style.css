@@ -4,7 +4,7 @@
     --black: #000000;
     --bg: #ffffff;
     --border: 0.1rem solid #dd2f2f;
-    --light-color: #666; /* Adicionando uma cor clara para textos secundários */
+    --light-color: #666; 
     font-size: 10px;
 }
 
@@ -12,7 +12,7 @@
 :root {
     --bg-dark: #121212;
     --text-dark: #e0e0e0;
-    --maincolor-dark: #ff998a; /* Uma cor principal mais clara para contraste */
+    --maincolor-dark: #ff998a; 
     --border-dark: 0.1rem solid #444;
 }
 
@@ -28,9 +28,8 @@
 }
 
 img {
-    /* Limita todas as imagens a no máximo 100% da largura do seu container */
     max-width: 100%; 
-    height: auto; /* Garante que a proporção da imagem seja mantida */
+    height: auto; 
 }
 
 body {
@@ -63,7 +62,7 @@ section {
 }
 
 .header .logo img {
-    width: 10rem; /* Ajuste o tamanho do logo */
+    width: 10rem; 
     height: auto;
     object-fit: contain;
 }
@@ -179,10 +178,8 @@ section {
     line-height: 1.6;
 }
 
-/* --- SEÇÃO MENU (CORREÇÃO DE GRID ESPECÍFICA) --- */
+/* --- SEÇÃO MENU (GRID ESPECÍFICA) --- */
 .menu .box-container {
-    /* CORRIGIDO: Este seletor agora é específico para o Menu,
-       para que não afete o layout de grid do carrossel (Review) */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap:1.5rem;
@@ -227,17 +224,18 @@ section {
 }
 
 /* --- SEÇÃO REVIEW (CARROSSEL SWIPER) --- */
+
+/* Container que envolve o carrossel. Não deve ter display: grid/flex */
 .review-slider {
-    /* Container do Swiper precisa de padding inferior para a paginação/setas */
     padding-bottom: 5rem;
 }
 
+/* Estilo de cada slide/box */
 .review .swiper-slide.box {
-    /* Estilos dos cards de avaliação, que agora são slides */
     border: var(--border);
     text-align: center;
     padding: 3rem 2rem;
-    height: auto; /* Ajuste para acomodar o conteúdo */
+    height: auto; 
 }
 
 .review .swiper-slide.box p {
@@ -255,7 +253,7 @@ section {
 }
 
 .review .swiper-slide.box .user {
-    width: 10rem; /* Reduzindo o tamanho da imagem de usuário para ficar em círculo */
+    width: 10rem; 
     height: 10rem;
     object-fit: cover;
     border-radius: 50%;
@@ -265,17 +263,20 @@ section {
 /* --- ESTILOS DO SWIPER (Setas e Paginação) --- */
 .swiper-button-next,
 .swiper-button-prev {
-    color: var(--maincolor) !important; /* Cor principal para as setas */
+    color: var(--maincolor) !important; 
     top: 50%;
     transform: translateY(-50%);
     opacity: 0.8;
     transition: opacity 0.2s;
+    width: 3rem;
+    height: 3rem;
+    margin: 0 1rem;
 }
 
+/* Garante que a bolinha de navegação ativa tenha a cor do tema */
 .swiper-pagination-bullet-active {
-    background: var(--maincolor) !important; /* Cor principal para a bolinha ativa */
+    background: var(--maincolor) !important; 
 }
-
 
 /* --- SEÇÃO ENDEREÇO --- */
 .address {
@@ -288,7 +289,6 @@ section {
     height: 450px;
     border: 0;
 }
-
 
 /* --- SEÇÃO CONTATO E FORMULÁRIO --- */
 .contact .row {
@@ -348,6 +348,7 @@ section {
     background: var(--bg);
     padding-top: 5rem;
     border-top: var(--border);
+    text-align: center; 
 }
 
 .footer .box-container {
@@ -355,6 +356,7 @@ section {
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
     gap: 1.5rem;
     padding: 0 5rem;
+    text-align: left; 
 }
 
 .footer .box-container .box h3 {
@@ -373,6 +375,22 @@ section {
 
 .footer .box-container .box a:hover {
     color: var(--maincolor);
+}
+
+.footer .share {
+    padding: 1rem 0 3rem; 
+}
+
+.footer .share img {
+    margin: 0 0.5rem;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 1rem;
+    background-color: transparent;
+}
+
+.footer .share img:hover {
+    background-color: var(--maincolor);
 }
 
 .footer .credit {
@@ -479,6 +497,10 @@ body.dark-mode {
     color: #999;
 }
 
+.dark-mode .footer .share img:hover {
+    background-color: var(--maincolor-dark);
+}
+
 
 /* --- MEDIA QUERIES (RESPONSIVIDADE) --- */
 @media (max-width: 991px) {
@@ -506,7 +528,6 @@ body.dark-mode {
         height: auto;
     }
 
-    /* Reduz o número de slides visíveis no carrossel para mobile */
     .review-slider {
         padding: 2rem 0; 
     }
@@ -523,7 +544,6 @@ body.dark-mode {
         font-size: 1.8rem; 
     }
     
-    /* Garante que o Formulário de Contato se empilhe */
     .contact .row {
         flex-direction: column;
     }
