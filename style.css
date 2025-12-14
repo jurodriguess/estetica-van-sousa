@@ -1,10 +1,19 @@
+/* --- VARIÁVEIS DE COR E CONFIGURAÇÕES GLOBAIS --- */
 :root {
     --maincolor: #ff7867;
     --black: #000000;
     --bg: #ffffff;
     --border: 0.1rem solid #dd2f2f;
+    --light-color: #666; /* Adicionando uma cor clara para textos secundários */
     font-size: 10px;
+}
 
+/* Variáveis para Dark Mode */
+:root {
+    --bg-dark: #121212;
+    --text-dark: #e0e0e0;
+    --maincolor-dark: #ff998a; /* Uma cor principal mais clara para contraste */
+    --border-dark: 0.1rem solid #444;
 }
 
 * {
@@ -15,7 +24,7 @@
     text-decoration: none;
     text-transform: capitalize;
     transition: 0.2s linear;
-     font-family: "Roboto", sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 img {
@@ -32,9 +41,9 @@ section {
     padding: 3rem 2rem;
     margin: 0 auto;
     max-width: 1200px;
-    
 }
 
+/* --- HEADER --- */
 .header {
     position: fixed;
     top: 0;
@@ -53,13 +62,6 @@ section {
     padding-bottom: 1.5rem;
 }
 
-.header .section logo{
-    object-fit: contain;
-    width: 30px;
-    height: auto;
-    mix-blend-mode: color-burn;
-}
-
 .header .logo img {
     width: 10rem; /* Ajuste o tamanho do logo */
     height: auto;
@@ -69,7 +71,7 @@ section {
 .navbar a {
     margin: 0 1rem;
     font-size: 1.8rem;
-    color: #000000;
+    color: var(--black);
 }
 
 .navbar a:hover {
@@ -89,9 +91,10 @@ section {
     height: 40px;
 }
 
+/* --- BOTÃO GENÉRICO --- */
 .btn {
     background-color: var(--maincolor);
-    color: #000000;
+    color: var(--black);
     padding: 1rem 3rem;
     font-size: 1.7rem;
     cursor: pointer;
@@ -101,9 +104,9 @@ section {
 
 .btn:hover {
     letter-spacing: 0.2rem;
-
 }
 
+/* --- SEÇÃO HOME --- */
 .home-container {
     background: url("./img/homeimg.png");
     background-position: center;
@@ -121,8 +124,8 @@ section {
 } 
 
 .content h3 {
-    color: #cf3a3a;
-    font-size: 5.5rem;
+    color: #ffffff;
+    font-size: 5.7rem;
 }
 
 .content p {
@@ -133,6 +136,7 @@ section {
     padding: 1rem 0;
 }
 
+/* --- TÍTULOS DE SEÇÃO --- */
 .title {
     font-size: 4rem;
     color: #cf3a3a;
@@ -141,8 +145,6 @@ section {
     display: flex;
     align-items: center;
     flex-direction: column;
-
-    
 }
 
 .title span {
@@ -153,6 +155,7 @@ section {
     flex-direction: column;
 }
 
+/* --- SEÇÃO SOBRE MIM --- */
 .about .row {
     display: flex;
     align-items: center;
@@ -162,7 +165,6 @@ section {
 
 .about .row .content {
     padding: 2rem;
-    
 }
 
 .about .row .content h3 {
@@ -172,23 +174,21 @@ section {
 
 .about .row .content p {
     font-size: 1.8rem;
-    color: #000000;
+    color: var(--black);
     padding: 1rem 0;
     line-height: 1.6;
 }
 
-.box-container {
-
+/* --- SEÇÃO MENU (CORREÇÃO DE GRID ESPECÍFICA) --- */
+.menu .box-container {
+    /* CORRIGIDO: Este seletor agora é específico para o Menu,
+       para que não afete o layout de grid do carrossel (Review) */
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
     gap:1.5rem;
 }
 
-
-
-
 .menu .box-container .box {
-
     text-align: center;
     border: var(--border);
     padding: 5rem;
@@ -200,16 +200,14 @@ section {
     height: auto;
     object-fit: cover;
     object-position: center;
-    
-
 }
 .menu .box-container .box h3 {
-    color: #000000;
+    color: var(--black);
     font-size: 2rem;
     padding: 1rem 0;
 }
 .menu .box-container .box .price {
-    color: #000000;
+    color: var(--black);
     font-size: 2.5rem;
     padding: 0.5rem 0;
 }
@@ -225,116 +223,203 @@ section {
 }
 
 .menu .box-container .box:hover>* {
-    color: #000000;
+    color: var(--black);
 }
 
+/* --- SEÇÃO REVIEW (CARROSSEL SWIPER) --- */
+.review-slider {
+    /* Container do Swiper precisa de padding inferior para a paginação/setas */
+    padding-bottom: 5rem;
+}
 
-.review .box-container .box {
+.review .swiper-slide.box {
+    /* Estilos dos cards de avaliação, que agora são slides */
     border: var(--border);
     text-align: center;
     padding: 3rem 2rem;
+    height: auto; /* Ajuste para acomodar o conteúdo */
 }
 
-.review .box-container .box p {
+.review .swiper-slide.box p {
     font-size: 1.5rem;
-    color: #000000;
+    color: var(--black);
     padding: 2rem 0;
     line-height: 1.8; 
     font-weight: lighter;
-    
 }
 
-.review .box-container .box h3 {
-    color: #000000;
+.review .swiper-slide.box h3 {
+    color: var(--black);
     font-size: 2rem;
     margin: 1rem 0;
 }
 
-.review .box-container .box .user {
-    width: 30rem;
-    height: auto;
-    object-fit: contain;
+.review .swiper-slide.box .user {
+    width: 10rem; /* Reduzindo o tamanho da imagem de usuário para ficar em círculo */
+    height: 10rem;
+    object-fit: cover;
     border-radius: 50%;
-
+    margin: 0 auto 1.5rem;
 }
 
+/* --- ESTILOS DO SWIPER (Setas e Paginação) --- */
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--maincolor) !important; /* Cor principal para as setas */
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--maincolor) !important; /* Cor principal para a bolinha ativa */
+}
+
+
+/* --- SEÇÃO ENDEREÇO --- */
 .address {
     display: flex;
     align-items: center;
     flex-direction: column;
 }
-
-.footer {
-    text-align: center;
+.address iframe {
+    width: 100%;
+    height: 450px;
+    border: 0;
 }
 
-.footer .share {
+
+/* --- SEÇÃO CONTATO E FORMULÁRIO --- */
+.contact .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    padding: 2rem;
+    background: #f9f9f9;
+    border-radius: 0.5rem;
+}
+
+.contact .row .contact-info {
+    flex: 1 1 30rem;
+    padding: 3rem 0;
+}
+
+.contact .row .contact-info p {
+    font-size: 1.8rem;
+    color: var(--black);
+    padding: 0.5rem 0;
+}
+
+.contact .row form {
+    flex: 1 1 45rem;
+    padding: 3rem;
+    background: var(--bg);
+    border: var(--border);
+    border-radius: 0.5rem;
+}
+
+.contact .row form .subtitle {
+    font-size: 2.2rem;
+    color: var(--maincolor);
+    padding-bottom: 1.5rem;
+}
+
+.contact .row form .inputBox input,
+.contact .row form textarea {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.6rem;
+    color: var(--black);
+    text-transform: none;
+    border: var(--border);
+    margin: 0.7rem 0;
+    border-radius: 0.5rem;
+}
+
+.contact .row form textarea {
+    height: 15rem;
+    resize: none;
+}
+
+
+/* --- RODAPÉ (FOOTER) --- */
+.footer {
+    background: var(--bg);
+    padding-top: 5rem;
+    border-top: var(--border);
+}
+
+.footer .box-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 1.5rem;
+    padding: 0 5rem;
+}
+
+.footer .box-container .box h3 {
+    font-size: 2.2rem;
+    color: var(--black);
     padding: 1rem 0;
 }
-.footer .share img {
-    margin: 0.3rem;
-    cursor: pointer;
-    border-radius: 50%;
-    padding: 1rem;
 
+.footer .box-container .box p,
+.footer .box-container .box a {
+    font-size: 1.6rem;
+    color: var(--light-color);
+    padding: 0.5rem 0;
+    display: block;
 }
 
-.footer .share img:hover {
-    background-color: var(--maincolor);
+.footer .box-container .box a:hover {
+    color: var(--maincolor);
 }
 
-/* --- ESTILOS DO DARK MODE --- */
-
-/* Variáveis para Dark Mode (Opcional, mas limpa o código) */
-:root {
-    --bg-dark: #121212;
-    --text-dark: #dddcdc;
-    --maincolor-dark: #cf3a3a; /* Uma cor principal mais clara para contraste */
-    --border-dark: 0.1rem solid #444;
+.footer .credit {
+    text-align: center;
+    border-top: var(--border);
+    font-size: 2rem;
+    color: var(--black);
+    padding: 2.5rem 1rem;
+    margin-top: 2rem;
 }
 
-/* 1. MUDANÇAS GLOBAIS QUANDO O DARK MODE ESTÁ ATIVO */
+
+/* --- DARK MODE ESTILOS --- */
 body.dark-mode {
-    background-color: var(--bg-dark); /* Fundo escuro */
-    color: var(--text-dark); /* Texto claro */
+    background-color: var(--bg-dark); 
+    color: var(--text-dark); 
 }
 
 .dark-mode .header, 
 .dark-mode .header section { 
-    background-color: var(--bg-dark) !important; /* Usando !important para forçar a sobreposição */
+    background-color: var(--bg-dark) !important; 
     border-bottom: var(--border-dark);
 }
 
-/* 2. COR DOS LINKS DA NAVBAR */
 .dark-mode .navbar a {
-    color: var(--text-dark) !important; /* Links devem ser brancos/claros */
+    color: var(--text-dark) !important;
 }
 
-/* 3. COR AO PASSAR O MOUSE */
 .dark-mode .navbar a:hover {
     color: var(--maincolor-dark) !important;
     border-bottom: 0.1rem solid var(--maincolor-dark);
 }
-/* 3. TÍTULOS E TEXTOS */
-.dark-mode .content h3 {
-    color: #cf3a3a;
-}
 
+.dark-mode .content h3, 
 .dark-mode .content p,
 .dark-mode .title,
 .dark-mode .title span {
-    color: var(--text-dark); /* Garante que títulos e textos fiquem claros */
+    color: var(--text-dark); 
 }
 
-/* 4. SEÇÃO "SOBRE MIM" */
 .dark-mode .about .row {
-    background-color: #212121; /* Fundo mais escuro que o body */
+    background-color: #212121; 
 }
 .dark-mode .about .row p {
-color: var(--text-dark) !important; 
+    color: var(--text-dark) !important; 
 }
 
-/* 5. SEÇÃO MENU (BOXES) */
 .dark-mode .menu .box-container .box {
     background-color: #1e1e1e;
     border: var(--border-dark);
@@ -350,55 +435,68 @@ color: var(--text-dark) !important;
     background-color: #333;
 }
 
-/* 6. BOTÕES (BTNs) */
 .dark-mode .btn {
     background-color: var(--maincolor-dark);
-    color: var(--bg-dark); /* Texto escuro no botão claro */
+    color: var(--bg-dark);
 }
 
-/* 7. REVIEWS (AVALIAÇÕES) */
-.dark-mode .review .box-container .box {
+/* Dark Mode: Review (Carrossel) */
+.dark-mode .review .swiper-slide.box {
     background-color: #1e1e1e !important;
     border: var(--border-dark);
 }
 
-/* Cor do Texto do Depoimento */
-.dark-mode .review .box-container .box p {
-    color: var(--text-dark) !important; /* DEIXA O TEXTO BRANCO/CLARO */
+.dark-mode .review .swiper-slide.box p,
+.dark-mode .review .swiper-slide.box h3 {
+    color: var(--text-dark) !important; 
 }
 
-/* Cor do Nome da Cliente */
-.dark-mode .review .box-container .box h3 {
-    color: var(--text-dark) !important; /* DEIXA O NOME BRANCO/CLARO */
+.dark-mode .contact .row {
+    background-color: var(--bg-dark);
 }
 
+.dark-mode .contact .row form {
+    background: #1e1e1e;
+    border: var(--border-dark);
+}
+
+.dark-mode .contact .row .contact-info p {
+    color: var(--text-dark);
+}
+
+.dark-mode .footer {
+    background-color: var(--bg-dark);
+    border-top: var(--border-dark);
+}
+
+.dark-mode .footer .box-container .box h3,
+.dark-mode .footer .credit {
+    color: var(--text-dark);
+}
+
+.dark-mode .footer .box-container .box p,
+.dark-mode .footer .box-container .box a {
+    color: #999;
+}
+
+
+/* --- MEDIA QUERIES (RESPONSIVIDADE) --- */
 @media (max-width: 991px) {
-    /* Reduz o tamanho da fonte base para dispositivos menores */
     html {
         font-size: 55%; 
     }
-    
-    /* ---------------------------------------------------- */
-    /* A. HEADER (Cabeçalho) e Navegação */
-    /* ---------------------------------------------------- */
     
     .header section {
         padding: 1rem 2rem;
     }
     
-    /* Oculta a navbar lateral em telas grandes e a transforma em coluna em mobile */
     .header .navbar {
-        /* ... regras de posicionamento e background para menu mobile ... */
         flex-direction: column; 
-        width: 100%; /* Ocupa a largura total da tela */
+        width: 100%; 
     }
 
-    /* ---------------------------------------------------- */
-    /* B. SEÇÃO SOBRE MIM (.about) */
-    /* ---------------------------------------------------- */
-    
     .about .row {
-        flex-wrap: wrap; /* ESSENCIAL: Empilha a imagem e o texto */
+        flex-wrap: wrap; 
         justify-content: center;
         text-align: center;
     }
@@ -408,20 +506,25 @@ color: var(--text-dark) !important;
         height: auto;
     }
 
+    /* Reduz o número de slides visíveis no carrossel para mobile */
+    .review-slider {
+        padding: 2rem 0; 
+    }
+    
     .home-container section {
-        min-height: 80vh; /* Reduz a altura da seção home em mobile */
+        min-height: 80vh; 
     }
     
     .content h3 {
-        font-size: 4rem; /* Reduz o tamanho do título principal */
+        font-size: 4rem; 
     }
     
     .content p {
-        font-size: 1.8rem; /* Reduz o tamanho do parágrafo */
+        font-size: 1.8rem; 
     }
     
-  
-    
+    /* Garante que o Formulário de Contato se empilhe */
+    .contact .row {
+        flex-direction: column;
+    }
 }
-
-
