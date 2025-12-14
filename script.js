@@ -5,79 +5,93 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbar = document.querySelector('.navbar');
     const header = document.querySelector('.header');
     
-    // Removida a variável 'searchForm' que não estava definida em seu HTML
-
     // Função auxiliar para fechar todos os elementos flutuantes (apenas menu)
     const closeAll = () => {
         if (navbar) navbar.classList.remove('active');
-        // Não fechamos searchForm, pois ele não foi implementado/definido
     };
     
-    // === 2. INICIALIZAÇÃO DO CARROSSEL (SWIPER) - AGORA DENTRO DO DOMContentLoaded ===
-    
-    // Verifica se o container do carrossel existe antes de inicializar
-    if (document.querySelector(".review-slider")) {
-        var swiper = new Swiper(".review-slider", {
-            // Define quantas avaliações aparecerão por vez
-            slidesPerView: 3, 
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 5000, // 5 segundos de espera
-                disableOnInteraction: false,
+    // === 2. INICIALIZAÇÃO DO CARROSSEL (SWIPER) - MAIS INTERATIVO ===
+
+// Verifica se o Swiper foi carregado e se o container existe
+if (typeof Swiper !== 'undefined' && document.querySelector(".review-slider")) {
+    var swiper = new Swiper(".review-slider", {
+        
+        // EFEITOS INTERATIVOS
+        effect: "coverflow", // Adiciona um efeito 3D coverflow
+        grabCursor: true,     // Muda o cursor para indicar que o slide pode ser arrastado
+        centeredSlides: true, // Centraliza o slide ativo
+        
+        // CONFIGURAÇÕES DE VELOCIDADE
+        speed: 800, // Transição mais rápida (800ms)
+        
+        // CONFIGURAÇÕES BÁSICAS (mantidas)
+        slidesPerView: 1, 
+        spaceBetween: 30,
+        loop: true,
+        autoplay: {
+            delay: 4000, // Reduzido para 4 segundos
+            disableOnInteraction: false,
+        },
+        
+        // PAGINAÇÃO E NAVEGAÇÃO
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        
+        // EFEITO COVERFLOW
+        coverflowEffect: {
+            rotate: 50,       // Rotação dos slides não ativos
+            stretch: 0,
+            depth: 100,       // Profundidade do efeito
+            modifier: 1,
+            slideShadows: false,
+        },
+        
+        // RESPONSIVIDADE (Ajustada para a correção do loop)
+        breakpoints: {
+            0: {
+                slidesPerView: 1, 
             },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
+            768: {
+                // Em tablets, o Coverflow funciona melhor se mostrarmos apenas 1 slide centralizado
+                slidesPerView: 1, 
             },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
+            1024: { 
+                // No desktop, mostramos 2 (o central e um lateral)
+                slidesPerView: 2, 
             },
-            // Configurações de Responsividade:
-            breakpoints: {
-                0: { // Mobile (0px e acima)
-                    slidesPerView: 1, 
-                },
-                768: { // Tablet (768px e acima)
-                    slidesPerView: 2,
-                },
-                1024: { // Desktop (1024px e acima)
-                    slidesPerView: 3,
-                },
-            },
-        });
-    }
+        },
+    });
+}
 
     // === 3. DARK MODE ===
 
-    // Localize o botão/ícone de Dark Mode
     const darkModeToggle = document.getElementById('dark-mode-toggle');
     const body = document.body;
 
-    // Função para aplicar o Dark Mode
     function enableDarkMode() {
         body.classList.add('dark-mode');
         localStorage.setItem('theme', 'dark');
     }
 
-    // Função para desativar o Dark Mode
     function disableDarkMode() {
         body.classList.remove('dark-mode');
         localStorage.setItem('theme', 'light');
     }
 
-    // 1. Verificar a preferência salva ao carregar a página
     const savedTheme = localStorage.getItem('theme');
 
     if (savedTheme === 'dark') {
         enableDarkMode();
     } else if (savedTheme === null && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        // 2. Se não houver preferência salva, verifica a preferência do sistema operacional
         enableDarkMode();
     }
 
-    // 3. Adicionar o Event Listener para o clique no botão
     if (darkModeToggle) {
         darkModeToggle.addEventListener('click', () => {
             if (body.classList.contains('dark-mode')) {
@@ -90,9 +104,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // === 4. FECHAR ELEMENTOS E STICKY HEADER AO ROLAR ===
     window.addEventListener('scroll', () => {
-        closeAll(); // Fecha menu 
+        closeAll(); 
         
-        // Sticky Header: Adiciona sombreamento ou destaque ao rolar
         if (header) {
             if (window.scrollY > 80) {
                 header.classList.add('sticky');
@@ -117,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     behavior: 'smooth'
                 });
                 
-                closeAll(); // Fecha o menu/busca após a navegação
+                closeAll(); 
             }
         });
     });
